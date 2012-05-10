@@ -9,3 +9,10 @@ c=/shared/iplantcollaborative/example_data/agave_api/macs/input_tags.bed
 
 MACS_model.r             MACS_peaks.bed  MACS_summits.bed
 MACS_negative_peaks.xls  MACS_peaks.xls
+
+# Post JSON app to apps_v1 as follows
+
+curl -X POST -sku "<username>:<password>" -F "fileToUpload=@app.json" https://foundation.iplantc.org/apps-v1/apps | python -mjson.tool
+
+# Delete an existing app that I own
+curl -X DELETE -sku "<username>:<password>" https://foundation.iplantc.org/apps-v1/apps/<appid>
