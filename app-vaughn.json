@@ -1,0 +1,188 @@
+{"name":"macs-ranger",
+ "parallelism":"SERIAL",
+ "version":"1.4",
+ "helpURI":"https://pods.iplantcollaborative.org/wiki/display/DEapps/MACS",
+ "label":"MACS 1.4 (Ranger)",
+ "shortDescription":"MACS: Model-based Analysis of ChIP-Seq (MACS) on short reads",
+ "longDescription":"",
+ "author":"Liya Wang",
+ "datePublished":"",
+ "tags":["Chip-Seq","short reads","nucleotides","protein binding"],
+ "ontology":["http://sswap.info/iPlant/FoundationalAPI"],
+ "executionHost":"ranger.tacc.teragrid.org",
+ "executionType":"HPC",
+ "deploymentPath":"/iplant/home/vaughn/applications/macs/",
+ "templatePath":"wrapper.sh",
+ "testPath":"test/test.sh",
+ "checkpointable":"false",
+ "modules":["purge","load TACC","load irods","load python/2.7.1"],
+ "inputs":[
+    {"id":"t",
+     "value":
+        {"default":"",
+         "validator":"",
+         "visible":true,
+         "required":true},
+     "details":
+        {"label":"Treatment file:",
+         "description":"Chip-Seq treatment file"},
+     "semantics":
+        {"ontology":["http://sswapmeet.sswap.info/util/Alignment"],
+         "minCardinality":1,
+         "maxCardinality":1,
+         "fileTypes":["Text-0"]}},
+    {"id":"c",
+     "value":
+        {"default":"",
+         "validator":"",
+         "visible":true,
+         "required":true},
+     "details":
+        {"label":"Control file:",
+         "description":"Chip-Seq control file"},
+     "semantics":
+        {"ontology":["http://sswapmeet.sswap.info/util/Alignment"],
+         "minCardinality":1,
+         "maxCardinality":1,
+         "fileTypes":["Text-0"]}}],
+ "parameters":[
+    {"id":"n",
+     "value":
+        {"default":"MACS",
+         "type":"string",
+         "validator":"",
+         "required":true,
+         "visible":false},
+     "details":
+        {"label":"Experiment name:",
+         "description":"Specify the name of the analysis",
+         "visible":true},
+     "semantics":
+        {"ontology":["xs:string"]}},
+    {"id":"f",
+     "value":
+        {"default":"auto",
+         "validator":"auto|eland|bed|elandmulti|elandexport|elandmultipet|sam|bam|bowtie",
+         "required":true,
+         "visible":true,
+         "type":"string"},
+     "details":
+        {"label":"Input format: ",
+         "description":"Specify the format of the input read files.",
+         "visible":true},
+     "semantics":
+        {"ontology":["xs:string"]}},
+    {"id":"g",
+     "value":
+        {"default":"2700000000",
+         "validator":"\\d++",
+         "required":true,
+         "visible":true,
+         "type":"number"},
+     "details":
+        {"label":"Effective genome size (bp): ",
+         "description":"Specify the effective genome size.",
+         "visible":true},
+     "semantics":
+        {"ontology":["xs:integer"]}},
+    {"id":"p",
+     "value":
+        {"default":"0.00001",
+         "validator":"",
+         "required":true,
+         "visible":true,
+         "type":"number"},
+     "details":
+        {"label":"P_value cutoff: ",
+         "description":"P-value cutoff for peak detection.",
+         "visible":true},
+     "semantics":
+        {"ontology":["xs:float"]}},
+    {"id":"s",
+     "value":
+        {"default":"25",
+         "validator":"\\d++",
+         "required":true,
+         "visible":true,
+         "type":"number"},
+     "details":
+        {"label":"Tag size (bp): ",
+         "description":"Specify the tag size.",
+         "visible":true},
+     "semantics":
+        {"ontology":["xs:integer"]}},
+    {"id":"bw",
+     "value":
+        {"default":"300",
+         "validator":"\\d++",
+         "required":true,
+         "visible":true,
+         "type":"number"},
+     "details":
+        {"label":"Bandwidth: ",
+         "description":"Specify the band width.",
+         "visible":true},
+     "semantics":
+        {"ontology":["xs:integer"]}}],
+ "outputs":[
+    {"id":"MACS_model",
+     "value":
+        {"default":"MACS_model.r",
+         "validator":""},
+     "details":
+        {"label":"MACS model for R",
+         "description":""},
+     "semantics":
+        {"ontology":["http://sswapmeet.sswap.info/util/TextDocument"],
+         "minCardinality":"1",
+         "maxCardinality":"1",
+         "fileType":"TEXT-0"}},
+    {"id":"MACS_negative_peaks",
+     "value":
+        {"default":"MACS_negative_peaks.xls",
+         "validator":""},
+     "details":
+        {"label":"MACS negative peak (Excel)",
+         "description":""},
+     "semantics":
+        {"ontology":["http://sswapmeet.sswap.info/util/TextDocument"],
+         "minCardinality":"1",
+         "maxCardinality":"1",
+         "fileType":"TAB-0"}},
+    {"id":"MACS_peaks",
+     "value":
+        {"default":"MACS_peaks.xls",
+         "validator":""},
+     "details":
+        {"label":"MACS positive peak domains (Excel)",
+         "description":""},
+     "semantics":
+        {"ontology":["http://sswapmeet.sswap.info/util/TextDocument"],
+         "minCardinality":"1",
+         "maxCardinality":"1",
+         "fileType":"TAB-0"}},
+    {"id":"MACS_peaks_bed",
+     "value":
+        {"default":"MACS_peaks.bed",
+         "validator":""},
+     "details":
+        {"label":"MACS positive peak domains (BED)",
+         "description":""},
+     "semantics":
+        {"ontology":["http://sswapmeet.sswap.info/util/TextDocument"],
+         "minCardinality":"1",
+         "maxCardinality":"1",
+         "fileType":"BED-0"}},
+    {"id":"MACS_summits",
+     "value":
+        {"default":"MACS_summits.bed",
+         "validator":""},
+     "details":
+        {"label":"MACS peak summits (BED)",
+         "description":""},
+     "semantics":
+        {"ontology":["http://sswapmeet.sswap.info/util/TextDocument"],
+         "minCardinality":"1",
+         "maxCardinality":"1",
+         "fileType":"BED-0"}}]}
+         

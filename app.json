@@ -1,0 +1,210 @@
+{
+    "name": "macs-ranger",
+    "parallelism": "SERIAL",
+    "version": "1.4",
+    "helpURI": "https://pods.iplantcollaborative.org/wiki/display/DEapps/MACS",
+    "label": "macs-ranger",
+    "shortDescription": "MACS: Model-based Analysis of ChIP-Seq (MACS) on short reads",
+    "longDescription": "MACS: Model-based Analysis of ChIP-Seq (MACS) on short reads",
+    "author": "Liya Wang",
+    "datePublished": "",
+    "tags": [
+        "Chip-Seq",
+        "short reads",
+        "nucleotides",
+        "protein binding"
+    ],
+    "ontology": [
+        "http://sswap.info/iPlant/FoundationalAPI"
+    ],
+    "executionHost":"ranger.tacc.teragrid.org",
+    "executionType":"HPC",
+    "deploymentPath": "/iplant/home/lwang/applications/macs/",
+    "templatePath": "wrapper.sh",
+    "testPath": "test/test.sh",
+    "checkpointable": "false",
+    "modules": [
+        "purge",
+        "load TACC",
+        "irods",
+        "python/2.7.1"
+    ],
+    "inputs": [
+        {
+            "id": "t",
+            "value": {
+                "default": "",
+                "validator": "",
+                "visible": true,
+                "required": true
+            },
+            "details": {
+                "label": "Treatment file:",
+                "description": "Chip-Seq treatment file"
+            },
+            "semantics": {
+                "ontology": [
+                    "http://sswapmeet.sswap.info/util/Alignment"
+                ],
+                "minCardinality": 1,
+                "maxCardinality": 1,
+                "fileTypes": [
+                    ""
+                ]
+            }
+        },
+        {
+            "id": "c",
+            "value": {
+                "default": "",
+                "validator": "",
+                "visible": true,
+                "required": true
+            },
+            "details": {
+                "label": "Control file:",
+                "description": "Chip-Seq control file"
+            },
+            "semantics": {
+                "ontology": [
+                    "http://sswapmeet.sswap.info/util/Alignment"
+                ],
+                "minCardinality": 1,
+                "maxCardinality": 1,
+                "fileTypes": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "parameters": [
+        {
+            "id": "n",
+            "value":{
+       	    "default": "MACS_in_iPlant",
+           	    "type": "string",
+                "validator": "",
+                "required": true,
+                "visible": true
+                },
+            "details": {
+                "label": "Experiment name:",
+                "description": "Specify the name of the analysis",
+                "visible": true
+            },
+            "semantics": {
+                "ontology": [
+                    "xs:string"
+                ]
+            }
+        },
+        {
+            "id": "f",
+            "value": {
+                "default": "auto",
+                "validator": "auto|eland|bed|elandmulti|elandexport|elandmultipet|sam|bam|bowtie",
+                "required": true,
+                "visible": true,
+                "type": "string"
+            },
+            "details": {
+                "label": "Input format: ",
+                "description": "Specify the format of the input read files.",
+                "visible": true
+            },
+            "semantics": {
+                "ontology": [
+                    "xs:string"
+                ]
+            }
+        },
+        {
+            "id": "g",
+            "value": {
+                "default": "2700000000",
+                "validator": "\\d++",
+                "required": true,
+                "visible": true,
+                "type": "number"
+            },
+            "details": {
+                "label": "Effective genome size (bp): ",
+                "description": "Specify the effective genome size.",
+                "visible": true
+            },
+            "semantics": {
+                "ontology": [
+                    "xs:integer"
+                ]
+            }
+        },
+        {
+            "id": "p",
+            "value": {
+                "default": "0.00001",
+                "validator": "",
+                "required": true,
+                "visible": true,
+                "type": "number"
+            },
+            "details": {
+                "label": "P_value cutoff: ",
+                "description": "P-value cutoff for peak detection.",
+                "visible": true
+            },
+            "semantics": {
+                "ontology": [
+                    "xs:float"
+                ]
+            }
+        },
+        {
+            "id": "s",
+            "value": {
+                "default": "25",
+                "validator": "\\d++",
+                "required": true,
+                "visible": true,
+                "type": "number"
+            },
+            "details": {
+                "label": "Tag size (bp): ",
+                "description": "Specify the tag size.",
+                "visible": true
+            },
+            "semantics": {
+                "ontology": [
+                    "xs:integer"
+                ]
+            }
+        },
+        {
+            "id": "bw",
+            "value": {
+                "default": "300",
+                "validator": "\\d++",
+                "required": true,
+                "visible": true,
+                "type": "number"
+            },
+            "details": {
+                "label": "Bandwidth: ",
+                "description": "Specify the band width.",
+                "visible": true
+            },
+            "semantics": {
+                "ontology": [
+                    "xs:integer"
+                ]
+            }
+        }
+
+    ],
+    "outputs": [
+        {
+            "id": "",
+            "value": "",
+            "details": ""
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+#MACS Ranger
+
+appid=macs-ranger-1.4
+
+t=/shared/iplantcollaborative/example_data/agave_api/macs/treatment_tags.bed
+c=/shared/iplantcollaborative/example_data/agave_api/macs/input_tags.bed
+
+#Outputs
+
+MACS_model.r             MACS_peaks.bed  MACS_summits.bed
+MACS_negative_peaks.xls  MACS_peaks.xls
